@@ -13,7 +13,7 @@ const tempMin = document.querySelector('.temps-min');
 const weatherType = document.querySelector('.temp-type');
 const feelsLike = document.querySelector('.feels-like');
 const windStatus = document.querySelector('.wind-speed');
-const humityStatus = document.querySelector('.humity-status');
+const humidityStatus = document.querySelector('.humidity-status');
 const sunriseStatus = document.querySelector('.sunrise-status');
 const sunsetStatus = document.querySelector('.sunset-status');
 const weatherImg = document.querySelector('.weather-icon2');
@@ -106,7 +106,7 @@ async function updateWeatherinfo(city) {
     tempMin.textContent = 'Low: ' + Math.round(temp_min) + '°C'
     feelsLike.textContent = 'Feels like ' + Math.round(feels_like) + '°C'
     windStatus.textContent = speed + ' m/s'
-    humityStatus.textContent = humidity +'%'
+    humidityStatus.textContent = humidity +'%'
     sunriseStatus.textContent = `Sunrise: ${sunriseTime}`;
     sunsetStatus.textContent =  `Sunset: ${sunsetTime}`;
 
