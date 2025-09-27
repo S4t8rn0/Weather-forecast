@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>Weather</title>
+</head>
+<body>
+    <main class="main-container">
+        <div class="container" id="container">
+            <div class="search-container">
+                <button class="search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <input class="search" placeholder="Search City..." type="text">
+                <ul class="sugestion-list"></ul>
+            </div>
+
+            <div class="container-weather weather" id="weather">
+                <div class="container-weather1 fade-in">
+                    <div class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="country-txt">Zermatt</p>
+                    </div>
+
+                    <div class="day-of-week anima">
+                        <h1 class="date-week date-date">Friday</h1>
+                        <p class="date-day date-date">02 July, 2025</p>
+                    </div>
+
+                    <div class="temperature">
+                        <h1 class="temp-celsius">26°C</h1>
+                        <div class="max-min">
+                            <p class="temps-max">High: 27°C</p>
+                            <p class="temps-min">Low: 10°C</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container-weather2 fade-in">
+                    <div class="weather-icon">
+                        <img class="weather-icon2" src="./images/weather-icons/clouds.svg" alt="">
+                    </div>
+
+                    <div class="weather2">
+                        <h1 class="temp-type">Clouds</h1>
+                        <p class="feels-like">Feels like 26°C</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="container-week week" id="week">
+                <div class="part1">
+                    <p class="fade-in">Week</p>
+                    <div class="days">
+                        <div class="day-day hover-scale fade-in">
+                            <p class="day-forecast">Jul 03</p>
+                            <img class="img-forecast" src="./images/weather-icons/rain.svg" alt="">
+                            <p class="temp-forecast">20°C</p>
+                        </div>
+                        
+                        <div class="day-day hover-scale fade-in">
+                            <p class="day-forecast">Jul 04</p>
+                            <img class="img-forecast" src="./images/weather-icons/rain.svg" alt="">
+                            <p class="temp-forecast">21°C</p>
+                        </div>
+
+                        <div class="day-day hover-scale fade-in">
+                            <p class="day-forecast">Jul 05</p>
+                            <img class="img-forecast" src="./images/weather-icons/clouds.svg" alt="">
+                            <p class="temp-forecast">23°C</p>
+                        </div>
+
+                        <div class="day-day hover-scale fade-in">
+                            <p class="day-forecast">Jul 06</p>
+                            <img class="img-day4" src="./images/weather-icons/clouds.svg" alt="">
+                            <p class="temp-forecast">22°C</p>
+                        </div>
+
+                        <div class="day-day hover-scale fade-in">
+                            <p class="day-forecast">Jul 07</p>
+                            <img class="img-forecast" src="./images/weather-icons/clouds.svg" alt="">
+                            <p class="temp-forecast">23°C</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="part2">
+                    <div class="tomorrow">
+                        <div class="tomorrow-info fade-in">
+                            <h3>Tomorrow</h3>
+                            <p class="tomorrow-weather">Rainy</p>
+                            <h1 class="tomorrow-celsius">20°C</h1>
+                        </div>
+                        
+                        <div class="tomorrow-i fade-in">
+                            <img class="tomorrow-img" src="./images/weather-icons/rain.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container2">
+            <div class="container-highlight highlight" id="highlight">
+                <p>Today Highlight</p>
+                <div class="cards">
+                    <div class="rain fade-in">
+                        <p>Chance of rain</p>
+                        <div class="weather-spec hover-scale">
+                            <img src="./images/weather-icons/chance of rain.svg" alt="chance of rain icon">
+                            <div class="weather-spec-txt">
+                                <p class="mm-rain">0.0mm</p>
+                                <p class="porc-rain">0%</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="wind fade-in">
+                        <p>Wind speed</p>
+                        <div class="weather-spec hover-scale">
+                            <img src="./images/weather-icons/wind.svg" alt="wind icon">
+                            <p class="wind-speed">1.54m/s</p>
+                        </div>
+                    </div>
+
+                    <div class="humidity fade-in">
+                        <p>Humidity</p>
+                        <div class="weather-spec hover-scale">
+                            <img src="./images/weather-icons/humidity.svg" alt="humidity icon">
+                            <p class="humidity-status">64%</p>
+                        </div>
+                    </div>
+
+                    <div class="sunn fade-in">
+                        <p>Sun</p>
+                        <div class="weather-spec sun-spec hover-scale">
+                            <img src="./images/weather-icons/sunn.svg" alt="sun icon">
+                            <div class="sun-info">
+                                <p class="sunrise-status">Sunrise: 06:00</p>
+                                <p class="sunset-status">Sunset: 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="container-cities cities" id="cities">
+                <p class="fade-in">Other cities</p>
+                <div class="cards">
+                    <div class="city hover-scale">
+                        <div class="left-side fade-in">
+                            <h3>20°C</h3>
+                            <p>Rio de Janeiro<br>Brazil</p>
+                        </div>
+                        <div class="right-side fade-in">
+                            <img src="./images/weather-icons/rain.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="city hover-scale">
+                        <div class="left-side fade-in">
+                            <h3>26°C</h3>
+                            <p>Los Angeles<br>USA</p>
+                        </div>
+                        <div class="right-side fade-in">
+                            <img src="./images/weather-icons/sun.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="city hover-scale">
+                        <div class="left-side fade-in">
+                            <h3>30°C</h3>
+                            <p>Tokyo<br>Japan</p>
+                        </div>
+                        <div class="right-side fade-in">
+                            <img src="./images/weather-icons/clouds.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="city hover-scale">
+                        <div class="left-side fade-in">
+                            <h3>36°C</h3>
+                            <p>Rome<br>Italy</p>
+                        </div>
+                        <div class="right-side fade-in">
+                            <img src="./images/weather-icons/sun.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </main>    
+</body>
+<script src="./script.js"></script>
+</html>
