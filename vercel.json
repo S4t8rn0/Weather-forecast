@@ -1,23 +1,16 @@
 {
-    "version": 2,
-    "builds": [
+    "rewrites": [
         {
-            "src": "api/**/*.js",
-            "use": "@vercel/node"
+            "source": "/api/weather",
+            "destination": "/api/weather"
         },
         {
-            "src": "public/**",
-            "use": "@vercel/static"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api/$1"
+            "source": "/api/forecast",
+            "destination": "/api/forecast"
         },
         {
-            "src": "/(.*)",
-            "dest": "/public/$1"
+            "source": "/(.*)",
+            "destination": "/public/$1"
         }
     ]
 }
