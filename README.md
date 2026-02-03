@@ -27,19 +27,24 @@ This is a real-time weather forecast project, developed with **HTML, CSS, and Ja
 ```
 .
 ├── weather-backend/
-│  ├── src
-│  │   ├── app.js                # Entry point of the application
-│  │   ├── weatherService.js     # Get the API
-│  │   ├── routes
-│  │   │   └── weather.js        # Defines routes for the weather API
-│  │   └── controllers
-│  │       └── weatherController.js # Contains methods for handling weather data requests
-│  ├── .env                       # Environment variables (not included in version control)
-│  └── package.json               # npm configuration file
-├── frontend/
-│   ├── index.html      # Main page
-│   ├── style.css       # Styles
-│   └── script.js       # Front-end logic
+│   ├── src/
+│   │   ├── app.js                    # Entry point of the application
+│   │   ├── weatherService.js         # API service layer
+│   │   ├── routes/
+│   │   │   └── weather.js            # Defines routes for the weather API
+│   │   └── controllers/
+│   │       └── weatherController.js  # Handles weather data requests
+│   ├── .env                          # Environment variables (not in version control)
+│   └── package.json                  # npm configuration file
+│
+├── weather-frontend/
+│   ├── index.html                    # Main page
+│   ├── style.css                     # Styles
+│   ├── script.js                     # Front-end logic
+│   ├── images/                       # Weather icons and assets
+│   └── package.json                  # npm configuration file
+│
+├── .gitignore
 └── README.md
 ```
 
@@ -49,6 +54,10 @@ This is a real-time weather forecast project, developed with **HTML, CSS, and Ja
 
 - Search real-time weather forecast by city.  
 - Display temperature, weather condition, humidity, and weather icon.  
+- **5-day weather forecast** with daily predictions.
+- Sunrise and sunset times.
+- Wind speed and rain probability.
+- Other cities weather cards.
 - Secure integration with OpenWeather API via back-end.  
 
 ---
@@ -57,7 +66,7 @@ This is a real-time weather forecast project, developed with **HTML, CSS, and Ja
 
 - [ ] Improve mobile responsiveness.  
 - [ ] Add multi-language support.  
-- [ ] Display forecast for upcoming days.  
+- [x] ~~Display forecast for upcoming days.~~  
 
 ---
 

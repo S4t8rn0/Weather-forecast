@@ -1,13 +1,21 @@
 const express = require('express');
+const path = require('path');
 const dotenv = require('dotenv');
-const weatherRoutes = require('./routes/weather');
+const cors = require('cors');
 
-dotenv.config();
+// Carregar variáveis de ambiente do .env na raiz do backend
+dotenv.config({ path: path.join(__dirname, '../.env') });
+
+const weatherRoutes = require('./routes/weather');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middlewares
+app.use(cors());
 app.use(express.json());
+
+// Rotas
 app.use('/api/weather', weatherRoutes);
 
 app.listen(PORT, () => {

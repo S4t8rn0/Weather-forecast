@@ -1,3 +1,14 @@
+# Arquivos de ambiente (contém API Keys)
 .env
-node_modules
-node_modules/*
+
+# Dependências
+node_modules/
+**/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
