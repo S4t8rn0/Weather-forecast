@@ -62,14 +62,6 @@ This is a real-time weather forecast project, developed with **HTML, CSS, and Ja
 
 ---
 
-## 📌 Next Steps (To-Do)
-
-- [ ] Improve mobile responsiveness.  
-- [ ] Add multi-language support.  
-- [x] ~~Display forecast for upcoming days.~~  
-
----
-
 ## 📄 License
 This project is free to use for study and learning purposes.
 
