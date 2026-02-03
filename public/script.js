@@ -4,7 +4,7 @@ const sugestionList = document.querySelector('.sugestion-list');
 
 // URL dinâmica: localhost para desenvolvimento, /api para produção (Vercel)
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const API_BASE_URL = isLocalhost ? 'http://localhost:3000/api/weather' : '/api';
+const API_BASE_URL = isLocalhost ? 'http://localhost:3000/api' : '/api';
 
 const mainContainer = document.querySelector('.main-container');
 
@@ -48,17 +48,8 @@ inputSearch.addEventListener('keydown', (event) => {
 })
 
 async function getFetchData(endPoint, city) {
-    // URL dinâmica baseada no ambiente
-    let apiUrl;
-    if (isLocalhost) {
-        // Desenvolvimento local - usa o backend Express
-        apiUrl = endPoint === 'weather'
-            ? `${API_BASE_URL}?city=${encodeURIComponent(city)}`
-            : `${API_BASE_URL}/forecast?city=${encodeURIComponent(city)}`;
-    } else {
-        // Produção (Vercel) - usa Serverless Functions
-        apiUrl = `${API_BASE_URL}/${endPoint}?city=${encodeURIComponent(city)}`;
-    }
+    // URL dinâmica baseada no ambiente - mesma lógica para ambos
+    const apiUrl = `${API_BASE_URL}/${endPoint}?city=${encodeURIComponent(city)}`;
 
     const response = await fetch(apiUrl);
     return response.json();
@@ -280,19 +271,32 @@ async function updateOtherCities(currentCity) {
 async function updateRainChance(city) {
     const forecastData = await getFetchData('forecast', city);
 
-    const todayDate = new Date().toISOString().split('T')[0];
-    const rainForecast = forecastData.list.find(forecast =>
-        forecast.dt_txt.startsWith(todayDate) && forecast.pop !== undefined
-    );
+    if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
+        console.error('Dados de previsão não disponíveis');
+        return;
+    }
 
-    const rainMM = rainForecast?.rain?.["3h"] ?? 0;
-    const rainPop = rainForecast?.pop ?? 0;
+    // Pegar a primeira previsão disponível (próximas horas)
+    // A API retorna previsões a cada 3 horas
+    const rainForecast = forecastData.list[0];
+
+    // Também calcular a maior probabilidade de chuva nas próximas 24 horas
+    const next24Hours = forecastData.list.slice(0, 8); // 8 intervalos de 3h = 24h
+
+    // Encontrar a maior probabilidade de chuva
+    const maxPop = Math.max(...next24Hours.map(f => f.pop ?? 0));
+
+    // Somar a precipitação total esperada nas próximas 24h
+    const totalRainMM = next24Hours.reduce((sum, f) => {
+        const rain3h = f.rain?.["3h"] ?? 0;
+        return sum + rain3h;
+    }, 0);
 
     const mmRain = document.querySelector('.mm-rain');
     const porcRain = document.querySelector('.porc-rain');
 
-    mmRain.textContent = `${rainMM.toFixed(1)} mm`;
-    porcRain.textContent = `${(rainPop * 100).toFixed(1)}%`;
+    mmRain.textContent = `${totalRainMM.toFixed(1)} mm`;
+    porcRain.textContent = `${(maxPop * 100).toFixed(0)}%`;
 }
 
 function restartFadeIn(elements) {

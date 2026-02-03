@@ -18,6 +18,11 @@ app.use(express.json());
 // Rotas
 app.use('/api/weather', weatherRoutes);
 
+// Rota separada para forecast (consistente com Vercel Serverless Functions)
+const WeatherController = require('./controllers/weatherController');
+const forecastController = new WeatherController();
+app.get('/api/forecast', (req, res) => forecastController.getForecast(req, res));
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
